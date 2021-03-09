@@ -1,2 +1,50 @@
-# piflib
-A library for computing different personal information factors
+# piflib - computing personal information factors (PIF)
+
+## Installation
+This library requires Python3. To install, execute
+
+`pip install piflib`
+
+## Usage
+piflib expects the data as a [Pandas](https://pandas.pydata.org/) DataFrame. Luckily, [Pandas supports
+a wide range](https://pandas.pydata.org/docs/user_guide/io.html) of input formats.
+
+In this example, we have data in csv format. 
+
+```
+import pandas as pd
+import piflib
+
+dataframe = pd.read_csv('datafile.csv')
+cigs = piflib.compute_cigs(dataframe)
+csfs = piflib.compute_csfs(dataframe)
+```
+
+The `compute_cigs` and `compute_csfs` functions return a Pandas DataFrame, containing the CIG and CSF values 
+respectively. The CIG and CSF values appear in the same position as in the input data.
+
+## What does it do? How does it work?
+The documentation can be found [here]().
+
+## Limitations
+Piflib currently only supports discrete feature distributions.
+
+## Copyright
+Copyright 2021 CSIRO's Data61
+
+## Citing
+Piflib is designed, developed and supported by [CSIRO's Data61](https://www.data61.csiro.au/). If you use any part
+of this library in your research, please cite it using the following BibTex entry:
+
+    @misc{piflib,
+      author = {CSIRO's Data61},
+      title = {piflib - computing personal information factors},
+      year = {2021},
+      publisher = {GitHub},
+      journal = {GitHub Repository},
+      howpublished = {\url{https://github.com/PIFtools/piflib}},
+    }
+
+
+## Thank You
+We want to thank Jakub Nabaglo and Joyce Yu for their contributions to this codebase.

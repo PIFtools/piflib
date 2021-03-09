@@ -1,0 +1,4 @@
+sphinx
+ipython
+pandas
+nbsphinx
