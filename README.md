@@ -1,5 +1,7 @@
 # piflib - computing personal information factors (PIF)
 
+[![Documentation Status](https://readthedocs.org/projects/piflib/badge/?version=latest)](https://piflib.readthedocs.io/en/latest/?badge=latest)
+
 ## Installation
 This library requires Python3. To install, execute
 
@@ -24,7 +26,7 @@ The `compute_cigs` and `compute_csfs` functions return a Pandas DataFrame, conta
 respectively. The CIG and CSF values appear in the same position as in the input data.
 
 ## What does it do? How does it work?
-The documentation can be found [here]().
+The documentation can be found [here](https://piflib.readthedocs.io/en/latest).
 
 ## Limitations
 Piflib currently only supports discrete feature distributions.
