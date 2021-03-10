@@ -2,6 +2,7 @@
 
 [![Documentation Status](https://readthedocs.org/projects/piflib/badge/?version=latest)](https://piflib.readthedocs.io/en/latest/?badge=latest)
 [![Tests](https://github.com/PIFtools/piflib/actions/workflows/python-test.yml/badge.svg)](https://github.com/PIFtools/piflib/actions/workflows/python-test.yml)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=PIFtools/piflib)](https://dependabot.com)
 
 ## Installation
 This library requires Python3. To install, execute
