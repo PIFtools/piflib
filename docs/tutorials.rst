@@ -9,10 +9,10 @@ running the tutorials
 The notebooks can run online using binder.
 
 .. image:: https://mybinder.org/badge_logo.svg
-  :target: https://mybinder.org/v2/gh/PIFtools/piflib/master?filepath=docs/tutorials
+  :target: https://mybinder.org/v2/gh/PIFtools/piflib/main?filepath=docs/tutorials
 
 
-Or you can download the tutorials from `github <https://github.com/PIFtools/piflib/tree/master/docs/tutorials>`_.
+Or you can download the tutorials from `github <https://github.com/PIFtools/piflib/tree/main/docs/tutorials>`_.
 The dependencies are listed in `tutorials-requirements.txt`. Install and start Jupyter from the ``docs/tutorials``
 directory::
 
