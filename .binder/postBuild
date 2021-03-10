@@ -2,3 +2,4 @@
 
 set - e
 pip install -r docs/tutorials-requirements.txt
+pip install -e .
