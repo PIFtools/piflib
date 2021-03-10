@@ -25,6 +25,10 @@ csfs = piflib.compute_csfs(dataframe)
 The `compute_cigs` and `compute_csfs` functions return a Pandas DataFrame, containing the CIG and CSF values 
 respectively. The CIG and CSF values appear in the same position as in the input data.
 
+You can run and experiment with the tutorials online here:
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PIFtools/piflib/main?filepath=docs%2Ftutorials)
+
+
 ## What does it do? How does it work?
 The documentation can be found [here](https://piflib.readthedocs.io/en/latest).
 
