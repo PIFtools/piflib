@@ -1,6 +1,7 @@
 # piflib - computing personal information factors (PIF)
 
 [![Documentation Status](https://readthedocs.org/projects/piflib/badge/?version=latest)](https://piflib.readthedocs.io/en/latest/?badge=latest)
+[![Tests](https://github.com/PIFtools/piflib/actions/workflows/python-test.yml/badge.svg)](https://github.com/PIFtools/piflib/actions/workflows/python-test.yml)
 
 ## Installation
 This library requires Python3. To install, execute
