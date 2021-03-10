@@ -16,7 +16,7 @@ setuptools.setup(
     description="A library for computing the personal information factor (PIF)",
     long_description=readme,
     long_description_content_type='text/markdown',
-    url='https:github.com/PIFtools/piflib',
+    url='https://github.com/PIFtools/piflib',
     license='Apache',
     install_requires=requirements,
     packages=setuptools.find_packages(),
