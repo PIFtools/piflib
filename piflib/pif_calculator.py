@@ -32,19 +32,19 @@ def compute_cigs(dataframe,
     """
     unknown_features = 1
     dataset = dataframe.values
-    l = len(dataset[0])
-    assert all(len(row) == l for row in dataset)
+    num_features = len(dataset[0])
+    assert all(len(row) == num_features for row in dataset)
 
     feature_priors = complete_feature_priors(dataframe, feature_priors)
 
     feature_accuracies = feature_accuracies.copy()
-    for i in range(l):
+    for i in range(num_features):
         if i not in feature_accuracies:
             feature_accuracies[i] = 1
 
-    feature_counts = [0] * l
-    feature_kls = [[0] * len(dataset) for _ in range(l)]
-    for is_ in sample_is(l, unknown_features, samples):
+    feature_counts = [0] * num_features
+    feature_kls = [[0] * len(dataset) for _ in range(num_features)]
+    for is_ in sample_is(num_features, unknown_features, samples):
         feature_kls_this = find_kls_for_features(
             dataset,
             is_,
@@ -103,15 +103,15 @@ def compute_csfs(df, feature_priors={}, feature_accuracies={}):
         corresponding cell values in the input dataframe.
     """
     dataset = df.values
-    l = len(dataset[0])
+    num_features = len(dataset[0])
     # compute priors
     feature_priors = complete_feature_priors(df, feature_priors)
     feature_accuracies = feature_accuracies.copy()
-    for i in range(l):
+    for i in range(num_features):
         if i not in feature_accuracies:
             feature_accuracies[i] = 1
-    feature_csfs = [[0] * len(dataset) for _ in range(l)]
-    for is_ in sample_is(l, 1, None):
+    feature_csfs = [[0] * len(dataset) for _ in range(num_features)]
+    for is_ in sample_is(num_features, 1, None):
         feature_csfs[is_[0]] = apply_to_posterior_and_prior(
             dataset,
             is_,
@@ -189,13 +189,13 @@ def sample_is(n, r, samples):
 
 
 def apply_to_posterior_and_prior(dataset, feature_idx, prior_distributions, accuracies, fun):
-    l = len(dataset[0])
-    assert all(len(row) == l for row in dataset)
+    num_features = len(dataset[0])
+    assert all(len(row) == num_features for row in dataset)
     feature_idx = feature_idx[0]
     buckets = collections.defaultdict(list)
     bucket_map = []
     for row in dataset:
-        key = tuple(row[i] for i in range(l) if not i == feature_idx)
+        key = tuple(row[i] for i in range(num_features) if not i == feature_idx)
         buckets[key].append(row[feature_idx])
         bucket_map.append((key, row[feature_idx]))
     bucket_values = {
@@ -214,14 +214,14 @@ def find_kls_for_features(dataset, feature_is, feature_distributions, accuracies
     We find the true distribution of the features taking into account
     the accuracy. We then compute the KL divergence.
     """
-    l = len(dataset[0])
-    assert all(len(row) == l for row in dataset)
+    num_features = len(dataset[0])
+    assert all(len(row) == num_features for row in dataset)
 
     # one bucket per set of 'known' features
     buckets = [collections.defaultdict(list) for _ in range(len(feature_is))]
-    bucket_map = [[] for _ in range(len(feature_is))]  ########
+    bucket_map = [[] for _ in range(len(feature_is))]
     for row in dataset:
-        key = tuple(row[i] for i in range(l) if i not in feature_is)
+        key = tuple(row[i] for i in range(num_features) if i not in feature_is)
         for i, j in enumerate(feature_is):
             buckets[i][key].append(row[j])
             bucket_map[i].append(key)

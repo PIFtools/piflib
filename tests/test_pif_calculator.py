@@ -17,7 +17,6 @@ data = {'A': [1, 1, 2, 2],
 df_fully_dependent = pd.DataFrame(data)
 
 
-
 def test_compute_cigs():
     # if every value in a column is the same, then there is no information gain
     cigs = pif.compute_cigs(df_same)

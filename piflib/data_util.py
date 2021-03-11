@@ -34,7 +34,7 @@ def complete_feature_priors(df, feature_priors):
     for i in range(len(df.columns)):
         if i in feature_priors:
             fd = feature_priors[i]
-            #check if complete?
+            # TODO: consider if we need to check if complete?
         else:
             ffs = tuple(map(operator.itemgetter(i), df.values))
             fd = calculate_distribution(ffs)

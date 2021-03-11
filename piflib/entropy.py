@@ -33,7 +33,7 @@ def entropy(df, rvs):
 
 
 def mutual_information(df, rvs_X, rvs_Y):
-    """Compute mutual information of two sets of random variables - I(X; Y).
+    """Compute mutual information of two sets of random variables - MI(X; Y).
 
     :param df: Dataframe that contains all data
     :param rvs_X: list of feature names for set X
@@ -44,8 +44,8 @@ def mutual_information(df, rvs_X, rvs_Y):
     H_X = entropy(df, rvs_X)
     H_Y = entropy(df, rvs_Y)
     H_XY = entropy(df, rvs_X + rvs_Y)
-    I = H_X + H_Y - H_XY
-    return(I)
+    MI = H_X + H_Y - H_XY
+    return(MI)
 
 
 def pairwise_mutual_information(df):
@@ -121,6 +121,10 @@ def create_conditional_entropy_table(df, round_digits=2):
     return cond_df
 
 
+def _set_diff(rv, rvs):
+    return list(set(rvs) - set(rv))
+
+
 def dual_total_correlation(df, rvs):
     """Compute dual total correlation of given rvs.
 
@@ -131,8 +135,8 @@ def dual_total_correlation(df, rvs):
 
     :return tc: total correlation
     """
-    others = lambda rv, rvs: list(set(rvs)- set(rv))
-    sum_cond_entropy = sum(conditional_entropy(df, [rv], others([rv], rvs)) for rv in rvs)
+
+    sum_cond_entropy = sum(conditional_entropy(df, [rv], _set_diff([rv], rvs)) for rv in rvs)
     joint_entropy = entropy(df, rvs)
     tc = joint_entropy - sum_cond_entropy
     return tc
@@ -148,6 +152,5 @@ def residual_entropy(df, rvs):
 
     :return sum_cond_entropy: residual entropy
     """
-    others = lambda rv, rvs:list(set(rvs)- set(rv))
-    sum_cond_entropy = sum(conditional_entropy(df, [rv], others([rv], rvs)) for rv in rvs)
+    sum_cond_entropy = sum(conditional_entropy(df, [rv], _set_diff([rv], rvs)) for rv in rvs)
     return sum_cond_entropy

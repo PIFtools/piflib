@@ -12,6 +12,7 @@
 #
 import os
 import sys
+import piflib
 sys.path.insert(0, os.path.abspath('..'))
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
@@ -21,7 +22,6 @@ project = 'piflib'
 copyright = "2020, CSIRO's Data61"
 author = 'Confidential Computing Team'
 
-import piflib
 # The short X.Y version.
 version = piflib.__version__.split('-')[0]
 # The full version, including alpha/beta/rc tags.
