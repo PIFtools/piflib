@@ -122,6 +122,29 @@ def compute_csfs(df, feature_priors={}, feature_accuracies={}):
     return pd.DataFrame(list(zip(*feature_csfs)), columns=df.columns)
 
 
+def compute_pif(cigs, percentile):
+    """ compute the PIF.
+
+    The PIF is defined as the n-th percentile of the individual RIG values. Or in other words, the RIG of n percent of
+    the entities in the dataset does not exceed the PIF value.
+
+    RIG stands for row information gain. It represents the overall information gain for an entity in the dataset. The
+    RIG is computed by summing the CIG values of an entity.
+
+    The percentile value can be chosen between 0 and 100. 100 will return the maximum RIG value. Often, the RIG values
+    from a long tail distribution with few high value outliers. Choosing a percentile value lower than 100 will ignore
+    (some of) the highest values. If ignoring the risk of some entities in the dataset fits within your risk framework,
+    then specifying a percentile value of less than 100 will make the PIF value less susceptible to RIG outliers.
+
+    :param cigs: The CIG values of the dataset (see the compute_cigs function in this module)
+    :param percentile: Which percentile of RIG values should be included in the PIF.
+    :returns: the PIF_percentile value of the given CIGs
+    """
+    rigs = cigs.sum(axis=1)
+    pif = np.percentile(rigs, percentile)
+    return pif
+
+
 def compute_posterior_distributions(feature, df):
     known_features = tuple(col_name for col_name in df.columns if col_name != feature)
     bucket = collections.defaultdict(list)
