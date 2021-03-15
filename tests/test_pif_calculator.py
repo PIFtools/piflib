@@ -16,6 +16,11 @@ data = {'A': [1, 1, 2, 2],
         'C': ['blue', 'green', 'red', 'cyan']}
 df_fully_dependent = pd.DataFrame(data)
 
+data = {'A': [1, 1, 2, 2],
+        'B': ['a', 'b', 'b', 'b'],
+        'C': ['blue', 'green', 'red', 'cyan']}
+df_mix = pd.DataFrame(data)
+
 
 def test_compute_cigs():
     # if every value in a column is the same, then there is no information gain
@@ -31,6 +36,7 @@ def test_compute_cigs():
     assert (cigs.A == 1).all()
     assert (cigs.B == 1).all()
     assert (cigs.C == 1).all()
+    pif_95 = pif.compute_pif(cigs, 0.95)
 
 
 def test_compute_weighted_cigs():
@@ -60,3 +66,15 @@ def test_compute_csfs():
     assert (csfs.A == 0.5).all()
     assert (csfs.B == 0.5).all()
     assert (csfs.C == 0.25).all()
+
+
+def test_compute_pif():
+    cigs = pif.compute_cigs(df_mix)
+    pif_100 = pif.compute_pif(cigs, 100)
+    rigs = cigs.sum(axis=1)
+    assert pif_100 == rigs.max()
+    pif_0 = pif.compute_pif(cigs, 0)
+    assert pif_0 == rigs.min()
+    assert pif.compute_pif(cigs, 99) < pif_100
+    pif_50 = pif.compute_pif(cigs, 50)
+    assert rigs[2] < pif_50 < rigs[1]
