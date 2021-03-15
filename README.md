@@ -40,6 +40,10 @@ Piflib currently only supports discrete feature distributions.
 ## Copyright
 Copyright 2021 CSIRO's Data61
 
+## License
+Piflib is released under the Apache-2 license.
+Unless required by applicable law or agreed to in writing, software distributed under this license is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the [License](https://github.com/PIFtools/piflib/blob/main/LICENSE) for the specific language governing permissions and limitations.
+
 ## Citing
 Piflib is designed, developed and supported by [CSIRO's Data61](https://www.data61.csiro.au/). If you use any part
 of this library in your research, please cite it using the following BibTex entry:
