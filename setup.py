@@ -10,7 +10,7 @@ requirements = [
 
 setuptools.setup(
     name="piflib",
-    version="0.1.0",
+    version="0.1.1",
     author="CSIRO's DATA61",
     author_email="confidential.computing@data61.csiro.au",
     description="A library for computing the personal information factor (PIF)",
