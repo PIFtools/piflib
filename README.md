@@ -59,4 +59,4 @@ of this library in your research, please cite it using the following BibTex entr
 
 
 ## Thank You
-We want to thank Jakub Nabaglo and Joyce Yu for their contributions to this codebase.
+We want to thank Jakub Nabaglo and Joyce Yu for their contributions to this codebase. An initial implementation is available at https://github.com/marcportlock/Directed_Ideation_2019.   
