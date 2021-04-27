@@ -38,7 +38,7 @@ The documentation can be found [here](https://piflib.readthedocs.io/en/latest).
 Piflib currently only supports discrete feature distributions.
 
 ## Copyright
-Copyright 2021 CSIRO's Data61
+Copyright © Cyber Security Research Centre Limited 2021. This work has been supported by the Cyber Security Research Centre (CSCRC) Limited whose activities are partially funded by the Australian Government’s Cooperative Research Centres Programme. We are currently tracking the impact CSCRC funded research. If you have used this code in your project, please contact us at contact@cybersecuritycrc.org.au to let us know.
 
 ## License
 Piflib is released under the Apache-2 license.
